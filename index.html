@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculadora de notas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Familjen+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="folha">
+      <header class="cabecalho">
+        <h1>Calculadora de notas</h1>
+        <p>Digite as notas do aluno e veja se ele passou de ano.</p>
+      </header>
+
+      <!-- ===== FORMULÁRIO ===== -->
+      <form id="form-notas" novalidate>
+        <fieldset class="bloco">
+          <legend>Notas do aluno</legend>
+
+          <!-- Cada nota é uma .nota. O botão "Adicionar nota" deve criar mais uma aqui dentro -->
+          <div id="lista-notas">
+            <div class="nota">
+              <label for="nota-1">Nota 1</label>
+              <input
+                type="number"
+                id="nota-1"
+                class="nota__input"
+                min="0"
+                max="10"
+                step="0.1"
+                inputmode="decimal"
+                placeholder="0 a 10"
+              />
+            </div>
+            <div class="nota">
+              <label for="nota-2">Nota 2</label>
+              <input
+                type="number"
+                id="nota-2"
+                class="nota__input"
+                min="0"
+                max="10"
+                step="0.1"
+                inputmode="decimal"
+                placeholder="0 a 10"
+              />
+            </div>
+            <div class="nota">
+              <label for="nota-3">Nota 3</label>
+              <input
+                type="number"
+                id="nota-3"
+                class="nota__input"
+                min="0"
+                max="10"
+                step="0.1"
+                inputmode="decimal"
+                placeholder="0 a 10"
+              />
+            </div>
+            <div class="nota">
+              <label for="nota-4">Nota 4</label>
+              <input
+                type="number"
+                id="nota-4"
+                class="nota__input"
+                min="0"
+                max="10"
+                step="0.1"
+                inputmode="decimal"
+                placeholder="0 a 10"
+              />
+            </div>
+          </div>
+
+          <button type="button" id="btn-adicionar" class="btn btn--texto">
+            + Adicionar nota
+          </button>
+        </fieldset>
+
+        <div class="bloco campo-media">
+          <label for="media-minima">Média mínima para aprovação</label>
+          <input
+            type="number"
+            id="media-minima"
+            min="0"
+            max="10"
+            step="0.1"
+            value="7"
+            inputmode="decimal"
+          />
+        </div>
+
+        <!-- Mensagem de erro (ex.: nota vazia ou maior que 10). Mostre/esconda com JS -->
+        <p id="erro" class="erro" role="alert" hidden></p>
+
+        <div class="acoes">
+          <button type="submit" id="btn-calcular" class="btn btn--principal">
+            Calcular média
+          </button>
+          <button type="reset" id="btn-limpar" class="btn btn--secundario">
+            Limpar
+          </button>
+        </div>
+      </form>
+
+      <!-- ===== RESULTADO =====
+         Começa escondido (atributo hidden).
+         Para mostrar: resultado.hidden = false
+         Para a cor mudar, adicione UMA destas classes na <section>:
+         "aprovado", "recuperacao" ou "reprovado" -->
+      <section id="resultado" class="resultado" aria-live="polite" hidden>
+        <div class="resultado__nota">
+          <span id="valor-media">0,0</span>
+        </div>
+        <div class="resultado__texto">
+          <p id="situacao" class="resultado__situacao">Situação</p>
+          <p id="detalhe" class="resultado__detalhe">
+            Detalhes do cálculo aparecem aqui.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
